@@ -16,6 +16,7 @@ if ('serviceWorker' in navigator) {
             navigator.serviceWorker.ready.then(function (registration) {
                 registration.sync.register('outbox').then(function () {
                     // registration succeeded
+                    console.log("Sync registeration suceess");
                 }, function () {
                     // registration failed
                 });
