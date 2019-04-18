@@ -39,7 +39,6 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('sync', (event) => {
     console.log("sync------------")
-    alert("sync")
     if (event.tag == 'outbox') {
         event.waitUntil(callFun());
     }
