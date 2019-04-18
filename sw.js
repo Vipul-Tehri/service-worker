@@ -48,6 +48,20 @@ function callFun() {
     console.log("Yipe--------Sync executed")
 }
 
+function fetchAndCacheLatestNews() {
+    console.log("fetchAndCacheLatestNews-----------")
+}
+
+self.addEventListener('periodicsync', function (event) {
+    if (event.registration.tag == 'get-latest-news') {
+        event.waitUntil(fetchAndCacheLatestNews());
+    }
+    else {
+        // unknown sync, may be old, best to unregister
+        event.registration.unregister();
+    }
+});
+
 
 // self.addEventListener('fetch', e => {
 //     console.log("fetching");
