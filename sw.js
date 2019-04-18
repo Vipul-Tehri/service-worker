@@ -41,9 +41,13 @@ self.addEventListener('sync', (event) => {
     console.log("sync------------")
     alert("sync")
     if (event.tag == 'outbox') {
-        event.waitUntil(cacheAllHomePageApi());
+        event.waitUntil(callFun());
     }
 });
+
+function callFun() {
+    console.log("Yipe--------Sync executed")
+}
 
 
 // self.addEventListener('fetch', e => {
