@@ -21,20 +21,21 @@ if ('serviceWorker' in navigator) {
                     // registration failed
                 });
             });
+            navigator.serviceWorker.ready.then(function (registration) {
+                registration.periodicSync.register({
+                    tag: 'get-latest-news',         // default: ''
+                    minPeriod: 60, // default: 0
+                    powerState: 'auto',   // default: 'auto'
+                    networkState: 'online'  // default: 'online'
+                }).then(function (periodicSyncReg) {
+                    // success
+                }, function () {
+                    // failure
+                })
+            });
         });
 
-        navigator.serviceWorker.ready.then(function (registration) {
-            registration.periodicSync.register({
-                tag: 'get-latest-news',         // default: ''
-                minPeriod: 60, // default: 0
-                powerState: 'auto',   // default: 'auto'
-                networkState: 'online'  // default: 'online'
-            }).then(function (periodicSyncReg) {
-                // success
-            }, function () {
-                // failure
-            })
-        });
+
 
 
         // navigator.serviceWorker.ready.then(function (registration) {
